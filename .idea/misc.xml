@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pool_RS/app/src/main/res/layout-v28/fragment_login.xml" value="0.27291666666666664" />
+        <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pool_RS/app/src/main/res/layout/activity_main.xml" value="0.27291666666666664" />
+        <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pool_RS/app/src/main/res/layout/app_bar_main.xml" value="0.27291666666666664" />
         <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pool_RS/app/src/main/res/layout/content_main.xml" value="0.27291666666666664" />
+        <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pool_RS/app/src/main/res/layout/fragment_home.xml" value="0.27291666666666664" />
+        <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pool_RS/app/src/main/res/layout/fragment_login.xml" value="0.21014492753623187" />
+        <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pool_RS/app/src/main/res/layout/nav_header_main.xml" value="0.27291666666666664" />
+        <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pool_RS/app/src/main/res/menu/activity_main_drawer.xml" value="0.27291666666666664" />
       </map>
     </option>
   </component>
