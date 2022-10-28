@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">SwimmingPool_RS</string>
+    <string name="app_name">Pooly Reservation System</string>
+
+    <string name="open_Drawer"></string>
 </resources>
