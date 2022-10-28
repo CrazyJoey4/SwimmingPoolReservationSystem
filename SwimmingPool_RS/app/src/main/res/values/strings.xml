@@ -1,6 +1,3 @@
 <resources>
-    <string name="app_name">SwimmingPool_ReservationSystem</string>
-    
-    <string name="nav_drawer_open">Open Navigation Drawer</string>
-    <string name="nav_drawer_close">Close Navigation Drawer</string>
+    <string name="app_name">SwimmingPool_RS</string>
 </resources>
