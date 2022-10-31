@@ -4,32 +4,32 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="@string/profile" />
+
+        <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_baseline_home_24"
-            android:title="Home" />
+            android:title="@string/home" />
 
         <item
             android:id="@+id/nav_announcement"
             android:icon="@drawable/ic_baseline_speaker_notes_24"
-            android:title="Announcement" />
+            android:title="@string/announcement" />
 
         <item
             android:id="@+id/nav_book"
             android:icon="@drawable/ic_baseline_edit_calendar_24"
-            android:title="Booking" />
+            android:title="@string/booking" />
     </group>
 
-    <item android:title="Other Actions">
+    <item android:title="@string/other_actions">
         <menu>
-            <item
-                android:id="@+id/nav_profile"
-                android:icon="@drawable/ic_baseline_person_24"
-                android:title="Profile" />
-
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_baseline_subdirectory_arrow_left_24"
-                android:title="Log Out" />
+                android:title="@string/logout" />
         </menu>
     </item>
 </menu>
