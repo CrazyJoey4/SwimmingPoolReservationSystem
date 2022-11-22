@@ -1,14 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright">
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Announcement Here"
-        android:textSize="30sp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/swimming_back"
+        android:backgroundTint="#80FFFFFF"
+        android:backgroundTintMode="src_over"
+        android:scaleType="centerCrop">
 
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/annBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/annblue"
+            android:alpha="0.8"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:fontFamily="sans-serif">
+
+            <TextView
+                android:id="@+id/annTitle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="8dp"
+                android:text="Title"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/annContent"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:padding="8dp"
+                android:text="Content"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/annDate"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:padding="8dp"
+                android:text="Date"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:textAlignment="textEnd"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>
