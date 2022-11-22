@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "904629822175",
+    "project_id": "swimmingpoolreservation-f5910",
+    "storage_bucket": "swimmingpoolreservation-f5910.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904629822175:android:646c25071ef92466c8ff6a",
+        "android_client_info": {
+          "package_name": "com.example.swimmingpool_rs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904629822175-flplq6ofqhdbq7bcrm3pob0ude8s4thd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHVf7hzwhg9_wSiWOdZxGlrVFXGhEz494"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904629822175-flplq6ofqhdbq7bcrm3pob0ude8s4thd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

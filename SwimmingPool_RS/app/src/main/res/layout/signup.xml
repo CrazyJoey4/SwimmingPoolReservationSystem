@@ -37,20 +37,22 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
+            android:id="@+id/editTextTextUsername"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
-            android:autofillHints="First Name"
+            android:autofillHints="Username"
             android:hint="@string/fName"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:inputType="text" />
 
         <EditText
+            android:id="@+id/editTextTextFullname"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
-            android:autofillHints="Last Name"
+            android:autofillHints="Full Name"
             android:hint="@string/lName"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
