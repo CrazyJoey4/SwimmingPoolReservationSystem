@@ -21,6 +21,9 @@
     <string name="signup">Sign Up!</string>
     <string name="pooly">Pooly</string>
     <string name="sign_up">Sign Up</string>
-    <string name="fName">Username</string>
+    <string name="uName">Username</string>
     <string name="lName">Full Name</string>
+
+    <color name="blue">#21425A</color>
+    <color name="annblue">#075090</color>
 </resources>
