@@ -54,9 +54,7 @@ public class SignupActivity extends AppCompatActivity {
                                 Toast.makeText(SignupActivity.this, "This email already registered before", Toast.LENGTH_SHORT).show();
                             }
                             else {
-
-                                //send data to firebase
-                                //use email as unique identity
+                                //send data to firebase, use email as unique identity
                                 databaseReference.child("users").child(emailTxt).child("username").setValue(usernameTxt);
                                 databaseReference.child("users").child(emailTxt).child("fullname").setValue(fullnameTxt);
                                 databaseReference.child("users").child(emailTxt).child("email").setValue(emailTxt);

@@ -3,6 +3,7 @@
 
     <string name="nav_drawer_open">Open Navigation Drawer</string>
     <string name="nav_drawer_close">Closer Navigation Drawer</string>
+    <string name="editprofile">Edit Profile Details</string>
 
     <string name="home">Home</string>
     <string name="announcement">Announcement</string>
@@ -11,6 +12,7 @@
     <string name="other_actions">Action</string>
     <string name="logout">Log Out</string>
 
+    <string name="profilepic">profilePic</string>
     <string name="username">Username</string>
     <string name="email">example@gmail.com</string>
 
@@ -21,9 +23,13 @@
     <string name="signup">Sign Up!</string>
     <string name="pooly">Pooly</string>
     <string name="sign_up">Sign Up</string>
-    <string name="uName">Username</string>
+    <string name="userid">User ID</string>
     <string name="lName">Full Name</string>
+    <string name="birth_date">Date of Birth</string>
+    <string name="gender">Gender</string>
+    <string name="contact">Contact</string>
 
     <color name="blue">#21425A</color>
     <color name="annblue">#075090</color>
+
 </resources>
