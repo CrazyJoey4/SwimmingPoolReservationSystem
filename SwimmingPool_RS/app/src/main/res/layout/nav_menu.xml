@@ -13,14 +13,18 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher_catswimming" />
 
-    <TextView
+    <EditText
+        android:id="@+id/Nav_Username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:text="@string/username"
+        android:focusable="false"
+        android:background="@null"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
     <TextView
+        android:id="@+id/Nav_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email" />

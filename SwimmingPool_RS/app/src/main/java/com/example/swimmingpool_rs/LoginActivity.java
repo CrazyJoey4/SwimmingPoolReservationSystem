@@ -35,30 +35,24 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (usernameTxt.isEmpty() || passwordTxt.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "Please enter your details", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
+                } else {
                     Boolean checkuser = dbHandler.checkUsername(usernameTxt);
-                    if (checkuser == true)
-                    {
+                    if (checkuser == true) {
                         Boolean verify = dbHandler.verifyUser(usernameTxt, passwordTxt);
-                        if (verify == true)
-                        {
-                            username.setText("");
-                            password.setText("");
+                        if (verify == true) {
+                            String name = username.getText().toString();
+
+                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                            intent.putExtra("EXTRA_SESSION_NAME", name);
+                            startActivity(intent);
+
                             Toast.makeText(LoginActivity.this, "You can Log in now !", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                        }
-                        else
-                        {
+                        } else {
                             Toast.makeText(LoginActivity.this, "Wrong Password !", Toast.LENGTH_SHORT).show();
                             password.setText("");
                         }
-                    }
-                    else
-                    {
+                    } else {
                         Toast.makeText(LoginActivity.this, "No Username Found", Toast.LENGTH_SHORT).show();
                     }
                 }
