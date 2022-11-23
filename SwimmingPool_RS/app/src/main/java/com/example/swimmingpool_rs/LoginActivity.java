@@ -21,7 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://swimmingpoolreservation-f5910-default-rtdb.asia-southeast1.firebasedatabase.app/");
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
 
                                     //Lead to main activity
-                                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                            new HomeFragment()).commit();
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
                                 }
                                 else {
                                     Toast.makeText(LoginActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
@@ -80,11 +81,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, SignupActivity.class));
-            }
+        signup.setOnClickListener(view -> {
+            Intent intent = new Intent(this, SignupActivity.class);
+            startActivity(intent);
         });
     }
 }
