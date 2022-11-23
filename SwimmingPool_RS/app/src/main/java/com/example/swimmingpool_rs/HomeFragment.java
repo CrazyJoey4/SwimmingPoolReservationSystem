@@ -23,6 +23,7 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
     private ImageSlider mImageSlider;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
