@@ -12,11 +12,65 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private DBHandler dbHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
+        final EditText username = findViewById(R.id.et_username);
+        final EditText password = findViewById(R.id.et_password);
 
+        final Button login = findViewById(R.id.btnLogin);
+        final Button signup = findViewById(R.id.btnSignup);
+
+        dbHandler = new DBHandler(LoginActivity.this);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String usernameTxt = username.getText().toString();
+                String passwordTxt = password.getText().toString();
+
+                if (usernameTxt.isEmpty() || passwordTxt.isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "Please enter your details", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Boolean checkuser = dbHandler.checkUsername(usernameTxt);
+                    if (checkuser == true)
+                    {
+                        Boolean verify = dbHandler.verifyUser(usernameTxt, passwordTxt);
+                        if (verify == true)
+                        {
+                            username.setText("");
+                            password.setText("");
+                            Toast.makeText(LoginActivity.this, "You can Log in now !", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            Toast.makeText(LoginActivity.this, "Wrong Password !", Toast.LENGTH_SHORT).show();
+                            password.setText("");
+                        }
+                    }
+                    else
+                    {
+                        Toast.makeText(LoginActivity.this, "No Username Found", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -2,6 +2,7 @@ package com.example.swimmingpool_rs;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -95,5 +96,33 @@ public class DBHandler extends SQLiteOpenHelper {
         // this method is called to check if the table exists already.
         db.execSQL("DROP TABLE IF EXISTS " + users_tb);
         onCreate(db);
+    }
+
+    public boolean checkUsername(String username)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("Select * from users where Username = ?", new String[]{username});
+        if (c.getCount() > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public boolean verifyUser(String username, String pwd)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("Select * from users where Username = ? and User_pwd = ?", new String[]{username, pwd});
+        if (c.getCount() > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
