@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp">
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/swimming_back"
@@ -8,38 +16,142 @@
     android:scaleType="centerCrop">
 
     <LinearLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
+        android:id="@+id/bookPool"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        >
+        android:fontFamily="sans-serif"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_margin="15dp"
-            android:text="Booking"
-            android:textSize="30dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:start="@+id/header"
-        android:alpha="0.8"
-        android:background="@color/white"
-        android:fontFamily="sans-serif"
-        android:orientation="horizontal">
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="65dp"
+            android:text=" RESERVE YOUR POOL "
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/blue"/>
 
         <DatePicker
             android:id="@+id/bookDatePicker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="410dp"
+            android:layout_marginLeft="25dp"
+            android:background="@color/white"
+            android:alpha="0.8"
+            android:layout_marginTop="10dp"
             android:calendarTextColor="@color/white"
+            android:headerBackground="@color/annblue"
             android:datePickerMode="calendar" />
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="50dp">
+
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bookDatePicker"
+                android:backgroundTint="@color/annblue"
+                android:text="Confirm" />
+
+            <TextView
+                android:id="@+id/dateShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="18dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="8dp">
+
+            <Button
+                android:id="@+id/btnSlot1"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_below="@+id/linear1"
+                android:backgroundTint="@color/blue"
+                android:text="0800-1000"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/btnSlot2"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_below="@+id/linear1"
+                android:backgroundTint="@color/blue"
+                android:layout_marginLeft="6dp"
+                android:text="1030-1230"
+                android:textSize="16dp"/>
+
+            <Button
+                android:id="@+id/btnSlot3"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_below="@+id/linear1"
+                android:backgroundTint="@color/blue"
+                android:layout_marginLeft="6dp"
+                android:text="1330-1530"
+                android:textSize="16dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="8dp">
+
+            <Button
+                android:id="@+id/btnSlot4"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_below="@+id/linear1"
+                android:backgroundTint="@color/blue"
+                android:text="1600-1800"
+                android:textSize="16dp"/>
+
+            <Button
+                android:id="@+id/btnSlot5"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_below="@+id/linear1"
+                android:backgroundTint="@color/blue"
+                android:layout_marginLeft="6dp"
+                android:text="1900-2100"
+                android:textSize="16dp"/>
+
+            <Button
+                android:id="@+id/btnSlot6"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_below="@+id/linear1"
+                android:backgroundTint="@color/blue"
+                android:layout_marginLeft="6dp"
+                android:text="2130-2330"
+                android:textSize="16dp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
 </RelativeLayout>
+
+</ScrollView>
