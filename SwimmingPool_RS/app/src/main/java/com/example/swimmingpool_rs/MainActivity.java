@@ -60,8 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.getMenu().findItem(R.id.nav_editann).setVisible(false);
 
         Boolean checkAdmin = dbHandler.checkAdmin(name);
-        if (checkAdmin)
-        {
+        if (checkAdmin) {
             navigationView.getMenu().findItem(R.id.nav_editann).setVisible(true);
         }
     }

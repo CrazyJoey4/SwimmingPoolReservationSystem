@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class BookingFragment extends Fragment {
+    private DBHandler dbHandler;
 
     @Nullable
     @Override

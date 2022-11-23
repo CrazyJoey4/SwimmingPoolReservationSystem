@@ -76,11 +76,11 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.execSQL(announcement_query);
 
-        String price_query = "CREATE TABLE price("+
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                "detail TEXT,"+
-                "amount DOUBLE,"+
-                "type TEXT,"+
+        String price_query = "CREATE TABLE price(" +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "detail TEXT," +
+                "amount DOUBLE," +
+                "type TEXT," +
                 "limitpax INT);";
 
         db.execSQL(price_query);
@@ -118,164 +118,154 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean checkUsername(String username)
-    {
+    public boolean checkUsername(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery("Select * from users where Username = ?", new String[]{username});
-        if (c.getCount() > 0)
-        {
+        if (c.getCount() > 0) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    public boolean verifyUser(String username, String pwd)
-    {
+    public boolean verifyUser(String username, String pwd) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery("Select * from users where Username = ? and User_pwd = ?", new String[]{username, pwd});
-        if (c.getCount() > 0)
-        {
+        if (c.getCount() > 0) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    public boolean checkAdmin(String username)
-    {
+    public boolean checkAdmin(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery("Select * from users where Username = ? and User_type = 'Admin'", new String[]{username});
-        if (c.getCount() > 0)
-        {
+        if (c.getCount() > 0) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    public void addAnnouncement(String title, String content){
+    public void addAnnouncement(String title, String content) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("Title",title);
-        values.put("Content",content);
-        db.insert("announcement",null,values);
+        values.put("Title", title);
+        values.put("Content", content);
+        db.insert("announcement", null, values);
         db.close();
     }
 
-    public Announcement getAnnouncement(int id, int position){
-        String sql = "SELECT * FROM announcement WHERE AnnouncementId="+id+
-                "ORDER BY AnnouncementId DESC LIMIT "+position+",1;";
+    public Announcement getAnnouncement(int id, int position) {
+        String sql = "SELECT * FROM announcement WHERE AnnouncementId=" + id +
+                "ORDER BY AnnouncementId DESC LIMIT " + position + ",1;";
 
         Cursor c = null;
         Announcement entry = null;
 
-        try{
+        try {
             SQLiteDatabase db = getReadableDatabase();
-            c = db.rawQuery(sql,null);
+            c = db.rawQuery(sql, null);
             c.moveToFirst();
 
-            if(c.getCount()>0){
+            if (c.getCount() > 0) {
                 entry = new Announcement();
-                entry.setAnnouncementId(c.getInt(c.getColumnIndex("AnnouncementId")));
-                entry.setContent(c.getString(c.getColumnIndex("Content")));
-                entry.setTitle(c.getString(c.getColumnIndex("Title")));
-                entry.setDatetime(c.getString(c.getColumnIndex("Date")));
+                entry.setAnnouncementId(c.getInt(c.getColumnIndexOrThrow("AnnouncementId")));
+                entry.setContent(c.getString(c.getColumnIndexOrThrow("Content")));
+                entry.setTitle(c.getString(c.getColumnIndexOrThrow("Title")));
+                entry.setDatetime(c.getString(c.getColumnIndexOrThrow("Date")));
             }
 
-        }catch(Exception e){
-            Log.d("Query Exception:",e.getMessage());
-        }finally {
-            c.close();
+        } catch (Exception e) {
+            Log.d("Query Exception:", e.getMessage());
+        }
+        finally
+        {
+            //c.close();
             return entry;
         }
     }
 
-    public void updateAnnouncement(int id, String title, String content){
+    public void updateAnnouncement(int id, String title, String content) {
         ContentValues values = new ContentValues();
-        values.put("Title",title);
-        values.put("Content",content);
+        values.put("Title", title);
+        values.put("Content", content);
 
-        try{
+        try {
             SQLiteDatabase db = getWritableDatabase();
-            db.update("announcement",values,"_id=?",new String[] {Integer.toString(id)});
+            db.update("announcement", values, "_id=?", new String[]{Integer.toString(id)});
             db.close();
-        }catch(Exception e){
-            Log.d("Query Exception:",e.getMessage());
+        } catch (Exception e) {
+            Log.d("Query Exception:", e.getMessage());
         }
     }
 
-    public void deleteAnnouncement(int id){
+    public void deleteAnnouncement(int id) {
         SQLiteDatabase db = getWritableDatabase();
-        db.delete("announcement","AnnouncementId=?",new String[] {Integer.toString(id)});
+        db.delete("announcement", "AnnouncementId=?", new String[]{Integer.toString(id)});
         db.close();
     }
 
-    public void addPrice(String detail, double amount, String type, int limitpax){
+    public void addPrice(String detail, double amount, String type, int limitpax) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("detail",detail);
-        values.put("amount",amount);
-        values.put("type",type);
-        values.put("limitpax",limitpax);
-        db.insert("price",null,values);
+        values.put("detail", detail);
+        values.put("amount", amount);
+        values.put("type", type);
+        values.put("limitpax", limitpax);
+        db.insert("price", null, values);
         db.close();
     }
 
-    public Price getPrice(int id, int position){
-        String sql = "SELECT * FROM price WHERE _id="+id+
-                "ORDER BY AnnouncementId DESC LIMIT "+position+",1;";
+    public Price getPrice(int id, int position) {
+        String sql = "SELECT * FROM price WHERE _id=" + id +
+                "ORDER BY AnnouncementId DESC LIMIT " + position + ",1;";
 
         Cursor c = null;
         Price entry = null;
 
-        try{
+        try {
             SQLiteDatabase db = getReadableDatabase();
-            c = db.rawQuery(sql,null);
+            c = db.rawQuery(sql, null);
             c.moveToFirst();
 
-            if(c.getCount()>0){
+            if (c.getCount() > 0) {
                 entry = new Price();
-                entry.set_id(c.getInt(c.getColumnIndex("_id")));
-                entry.setDetail(c.getString(c.getColumnIndex("detail")));
-                entry.setAmount(c.getDouble(c.getColumnIndex("amount")));
-                entry.setType(c.getString(c.getColumnIndex("type")));
-                entry.setLimitpax(c.getInt(c.getColumnIndex("limitpax")));
+                entry.set_id(c.getInt(c.getColumnIndexOrThrow("_id")));
+                entry.setDetail(c.getString(c.getColumnIndexOrThrow("detail")));
+                entry.setAmount(c.getDouble(c.getColumnIndexOrThrow("amount")));
+                entry.setType(c.getString(c.getColumnIndexOrThrow("type")));
+                entry.setLimitpax(c.getInt(c.getColumnIndexOrThrow("limitpax")));
             }
 
-        }catch(Exception e){
-            Log.d("Query Exception:",e.getMessage());
-        }finally {
+        } catch (Exception e) {
+            Log.d("Query Exception:", e.getMessage());
+        } finally {
             c.close();
             return entry;
         }
     }
 
-    public void deletePrice(int id){
+    public void deletePrice(int id) {
         SQLiteDatabase db = getWritableDatabase();
-        db.delete("price","_id=?",new String[] {Integer.toString(id)});
+        db.delete("price", "_id=?", new String[]{Integer.toString(id)});
         db.close();
     }
 
-    public void updatePrice(int id, String detail, double amount, String type, int limitpax){
+    public void updatePrice(int id, String detail, double amount, String type, int limitpax) {
         ContentValues values = new ContentValues();
-        values.put("detail",detail);
-        values.put("amount",amount);
-        values.put("type",type);
-        values.put("limitpax",limitpax);
+        values.put("detail", detail);
+        values.put("amount", amount);
+        values.put("type", type);
+        values.put("limitpax", limitpax);
 
-        try{
+        try {
             SQLiteDatabase db = getWritableDatabase();
-            db.update("price",values,"_id=?",new String[] {Integer.toString(id)});
+            db.update("price", values, "_id=?", new String[]{Integer.toString(id)});
             db.close();
-        }catch(Exception e){
-            Log.d("Query Exception:",e.getMessage());
+        } catch (Exception e) {
+            Log.d("Query Exception:", e.getMessage());
         }
     }
 }

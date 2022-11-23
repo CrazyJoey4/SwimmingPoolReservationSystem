@@ -35,12 +35,11 @@ public class EditAnnouncementFragment extends Fragment {
         aDate = view.findViewById(R.id.annDate);
         btnAddAnn = view.findViewById(R.id.btnAddAnn);
 
-        btnAddAnn.setOnClickListener(views->{
-            on_btn_clicked();
+        btnAddAnn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHandler.addAnnouncement(aTitle.getText().toString(), aContent.getText().toString());
+            }
         });
-    }
-
-    public void on_btn_clicked(){
-        dbHandler.addAnnouncement(aTitle.getText().toString(), aContent.getText().toString());
     }
 }
