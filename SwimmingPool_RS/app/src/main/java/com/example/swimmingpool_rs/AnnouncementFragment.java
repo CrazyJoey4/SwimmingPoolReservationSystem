@@ -28,5 +28,15 @@ public class AnnouncementFragment extends Fragment {
         final TextView aContent = view.findViewById(R.id.annContent);
         final TextView aDate = view.findViewById(R.id.annDate);
 
+        dbHandler = new DBHandler(getActivity());
+
+        Announcement a = dbHandler.getAnnouncement(0, 0);
+        if (a != null){
+            aTitle.setText(a.getTitle());
+            aContent.setText(a.getContent());
+            aDate.setText(a.getDatetime());
+        }
+
+
     }
 }

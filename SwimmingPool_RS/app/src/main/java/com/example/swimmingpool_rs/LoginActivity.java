@@ -37,9 +37,9 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Please enter your details", Toast.LENGTH_SHORT).show();
                 } else {
                     Boolean checkuser = dbHandler.checkUsername(usernameTxt);
-                    if (checkuser == true) {
+                    if (checkuser) {
                         Boolean verify = dbHandler.verifyUser(usernameTxt, passwordTxt);
-                        if (verify == true) {
+                        if (verify) {
                             String name = username.getText().toString();
 
                             Intent intent = new Intent(getBaseContext(), MainActivity.class);

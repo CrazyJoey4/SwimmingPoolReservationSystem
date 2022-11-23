@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,10 @@ import androidx.fragment.app.Fragment;
 public class EditAnnouncementFragment extends Fragment {
 
     private DBHandler dbHandler;
+    private EditText aTitle;
+    private EditText aContent;
+    private EditText aDate;
+    private Button btnAddAnn;
 
     @Nullable
     @Override
@@ -24,9 +30,16 @@ public class EditAnnouncementFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final TextView aTitle = view.findViewById(R.id.annTitle);
-        final TextView aContent = view.findViewById(R.id.annContent);
-        final TextView aDate = view.findViewById(R.id.annDate);
+        aTitle = view.findViewById(R.id.annTitle);
+        aContent = view.findViewById(R.id.annContent);
+        aDate = view.findViewById(R.id.annDate);
+        btnAddAnn = view.findViewById(R.id.btnAddAnn);
 
+        btnAddAnn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHandler.addAnnouncement(aTitle.getText().toString(), aContent.getText().toString());
+            }
+        });
     }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -66,6 +67,23 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // at last we are calling a exec sql method to execute above sql query
         db.execSQL(query);
+
+        String announcement_query = "CREATE TABLE announcement (" +
+                "AnnouncementId INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "Title TEXT," +
+                "Content TEXT," +
+                "Date DateTime DEFAULT (datetime('now','localtime')));";
+
+        db.execSQL(announcement_query);
+
+        String price_query = "CREATE TABLE price(" +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "detail TEXT," +
+                "amount DOUBLE," +
+                "type TEXT," +
+                "limitpax INT);";
+
+        db.execSQL(price_query);
     }
 
     // this method is use to add new course to our sqlite database.
@@ -96,49 +114,158 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // this method is called to check if the table exists already.
         db.execSQL("DROP TABLE IF EXISTS " + users_tb);
+        db.execSQL("DROP TABLE IF EXISTS announcement");
         onCreate(db);
     }
 
-    public boolean checkUsername(String username)
-    {
+    public boolean checkUsername(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery("Select * from users where Username = ?", new String[]{username});
-        if (c.getCount() > 0)
-        {
+        if (c.getCount() > 0) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    public boolean verifyUser(String username, String pwd)
-    {
+    public boolean verifyUser(String username, String pwd) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery("Select * from users where Username = ? and User_pwd = ?", new String[]{username, pwd});
-        if (c.getCount() > 0)
-        {
+        if (c.getCount() > 0) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    public boolean checkAdmin(String username)
-    {
+    public boolean checkAdmin(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery("Select * from users where Username = ? and User_type = 'Admin'", new String[]{username});
-        if (c.getCount() > 0)
-        {
+        if (c.getCount() > 0) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
+    public void addAnnouncement(String title, String content) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Title", title);
+        values.put("Content", content);
+        db.insert("announcement", null, values);
+        db.close();
+    }
+
+    public Announcement getAnnouncement(int id, int position) {
+        String sql = "SELECT * FROM announcement WHERE AnnouncementId=" + id +
+                "ORDER BY AnnouncementId DESC LIMIT " + position + ",1;";
+
+        Cursor c = null;
+        Announcement entry = null;
+
+        try {
+            SQLiteDatabase db = getReadableDatabase();
+            c = db.rawQuery(sql, null);
+            c.moveToFirst();
+
+            if (c.getCount() > 0) {
+                entry = new Announcement();
+                entry.setAnnouncementId(c.getInt(c.getColumnIndexOrThrow("AnnouncementId")));
+                entry.setContent(c.getString(c.getColumnIndexOrThrow("Content")));
+                entry.setTitle(c.getString(c.getColumnIndexOrThrow("Title")));
+                entry.setDatetime(c.getString(c.getColumnIndexOrThrow("Date")));
+            }
+
+        } catch (Exception e) {
+            Log.d("Query Exception:", e.getMessage());
+        }
+        finally
+        {
+            //c.close();
+            return entry;
+        }
+    }
+
+    public void updateAnnouncement(int id, String title, String content) {
+        ContentValues values = new ContentValues();
+        values.put("Title", title);
+        values.put("Content", content);
+
+        try {
+            SQLiteDatabase db = getWritableDatabase();
+            db.update("announcement", values, "_id=?", new String[]{Integer.toString(id)});
+            db.close();
+        } catch (Exception e) {
+            Log.d("Query Exception:", e.getMessage());
+        }
+    }
+
+    public void deleteAnnouncement(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete("announcement", "AnnouncementId=?", new String[]{Integer.toString(id)});
+        db.close();
+    }
+
+    public void addPrice(String detail, double amount, String type, int limitpax) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("detail", detail);
+        values.put("amount", amount);
+        values.put("type", type);
+        values.put("limitpax", limitpax);
+        db.insert("price", null, values);
+        db.close();
+    }
+
+    public Price getPrice(int id, int position) {
+        String sql = "SELECT * FROM price WHERE _id=" + id +
+                "ORDER BY AnnouncementId DESC LIMIT " + position + ",1;";
+
+        Cursor c = null;
+        Price entry = null;
+
+        try {
+            SQLiteDatabase db = getReadableDatabase();
+            c = db.rawQuery(sql, null);
+            c.moveToFirst();
+
+            if (c.getCount() > 0) {
+                entry = new Price();
+                entry.set_id(c.getInt(c.getColumnIndexOrThrow("_id")));
+                entry.setDetail(c.getString(c.getColumnIndexOrThrow("detail")));
+                entry.setAmount(c.getDouble(c.getColumnIndexOrThrow("amount")));
+                entry.setType(c.getString(c.getColumnIndexOrThrow("type")));
+                entry.setLimitpax(c.getInt(c.getColumnIndexOrThrow("limitpax")));
+            }
+
+        } catch (Exception e) {
+            Log.d("Query Exception:", e.getMessage());
+        } finally {
+            c.close();
+            return entry;
+        }
+    }
+
+    public void deletePrice(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete("price", "_id=?", new String[]{Integer.toString(id)});
+        db.close();
+    }
+
+    public void updatePrice(int id, String detail, double amount, String type, int limitpax) {
+        ContentValues values = new ContentValues();
+        values.put("detail", detail);
+        values.put("amount", amount);
+        values.put("type", type);
+        values.put("limitpax", limitpax);
+
+        try {
+            SQLiteDatabase db = getWritableDatabase();
+            db.update("price", values, "_id=?", new String[]{Integer.toString(id)});
+            db.close();
+        } catch (Exception e) {
+            Log.d("Query Exception:", e.getMessage());
+        }
+    }
 }
