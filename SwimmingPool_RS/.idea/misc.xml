@@ -3,9 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pooly_RS/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/drawable/default_selected_dot.xml" value="0.145" />
-        <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pooly_RS/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/drawable/default_unselected_dot.xml" value="0.145" />
-        <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pooly_RS/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/drawable/pool_slideshow.xml" value="0.1955" />
         <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pooly_RS/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pooly_RS/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/layout/fragment_announcement.xml" value="0.27291666666666664" />
         <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pooly_RS/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/layout/fragment_booking.xml" value="0.27291666666666664" />
@@ -15,6 +12,8 @@
         <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pooly_RS/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/layout/nav_menu.xml" value="0.33" />
         <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pooly_RS/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/layout/profile_edit.xml" value="0.2984375" />
         <entry key="..\:/IT/Degree INTI/Semester 7/Android Development Skill/Pooly_RS/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/menu/nav_menu.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Pau Thing/AndroidStudioProjects/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/layout/fragment_announcement.xml" value="0.2" />
+        <entry key="..\:/Users/Pau Thing/AndroidStudioProjects/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/layout/fragment_booking.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Pau Thing/AndroidStudioProjects/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/layout/fragment_home.xml" value="0.18931159420289856" />
         <entry key="..\:/Users/Pau Thing/AndroidStudioProjects/SwimmingPoolReservationSystem/SwimmingPool_RS/app/src/main/res/layout/login.xml" value="0.21603260869565216" />
       </map>
