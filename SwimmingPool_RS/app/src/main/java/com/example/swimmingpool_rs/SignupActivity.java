@@ -39,13 +39,14 @@ public class SignupActivity extends AppCompatActivity {
                 String fullnameTxt = fullname.getText().toString();
                 String emailTxt = email.getText().toString();
                 String passwordTxt = password.getText().toString();
+                String userType = "User";
 
                 if (usernameTxt.isEmpty() || fullnameTxt.isEmpty() || emailTxt.isEmpty() || passwordTxt.isEmpty()) {
                     Toast.makeText(SignupActivity.this, "Please enter your details", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    dbHandler.addNewUser(usernameTxt, fullnameTxt, emailTxt, passwordTxt);
+                    dbHandler.addNewUser(usernameTxt, fullnameTxt, emailTxt, passwordTxt, userType);
                     Toast.makeText(SignupActivity.this, "You have Sign Up!", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
