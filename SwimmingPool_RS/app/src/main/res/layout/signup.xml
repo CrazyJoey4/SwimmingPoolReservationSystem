@@ -42,7 +42,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
             android:autofillHints="Username"
-            android:hint="@string/uName"
+            android:hint="@string/username"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:inputType="text" />
