@@ -20,6 +20,7 @@ import java.util.Calendar;
 public class EditAnnouncementFragment extends Fragment {
 
     private DBHandler dbHandler;
+
     private EditText aTitle;
     private EditText aContent;
     private Button btnAddAnn;
