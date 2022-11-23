@@ -25,11 +25,14 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+    private DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dbHandler = new DBHandler(MainActivity.this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //username passed from login
         String name = getIntent().getStringExtra("EXTRA_SESSION_NAME");
         TextView txtProfileName = (TextView) navigationView.getHeaderView(0).findViewById(R.id.Nav_Username);
         txtProfileName.setText(name);
@@ -51,6 +55,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
+        }
+
+        navigationView.getMenu().findItem(R.id.nav_editann).setVisible(false);
+
+        Boolean checkAdmin = dbHandler.checkAdmin(name);
+        if (checkAdmin)
+        {
+            navigationView.getMenu().findItem(R.id.nav_editann).setVisible(true);
         }
     }
 
@@ -75,6 +87,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ProfileFragment()).commit();
+                break;
+
+            case R.id.nav_editann:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new EditAnnouncementFragment()).commit();
                 break;
 
             case R.id.nav_logout:

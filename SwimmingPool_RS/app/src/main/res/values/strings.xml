@@ -10,6 +10,7 @@
     <string name="booking">Booking</string>
     <string name="profile">Profile</string>
     <string name="other_actions">Action</string>
+    <string name="editann">Edit Announcement</string>
     <string name="logout">Log Out</string>
 
     <string name="profilepic">profilePic</string>

@@ -27,6 +27,11 @@
     <item android:title="@string/other_actions">
         <menu>
             <item
+                android:id="@+id/nav_editann"
+                android:icon="@drawable/ic_baseline_edit_24"
+                android:title="@string/editann" />
+
+            <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_baseline_subdirectory_arrow_left_24"
                 android:title="@string/logout" />

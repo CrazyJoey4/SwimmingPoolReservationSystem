@@ -126,4 +126,19 @@ public class DBHandler extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    public boolean checkAdmin(String username)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("Select * from users where Username = ? and User_type = 'Admin'", new String[]{username});
+        if (c.getCount() > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

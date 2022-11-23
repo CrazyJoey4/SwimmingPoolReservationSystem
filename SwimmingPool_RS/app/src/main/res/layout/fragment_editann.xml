@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/swimming_back"
+        android:backgroundTint="#80FFFFFF"
+        android:backgroundTintMode="src_over"
+        android:scaleType="centerCrop">
+
+        <LinearLayout
+            android:id="@+id/annBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/annblue"
+            android:alpha="0.8"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+
+            <EditText
+                android:id="@+id/annTitle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="8dp"
+                android:hint="Title"
+                android:textColorHint="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"/>
+
+            <EditText
+                android:id="@+id/annContent"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:padding="8dp"
+                android:hint="Content"
+                android:textColorHint="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/annBox"
+            android:layout_centerInParent="true">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/annBox"
+                android:text="Add Announcement"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
