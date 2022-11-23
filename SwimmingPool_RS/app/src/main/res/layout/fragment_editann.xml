@@ -19,30 +19,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:alpha="0.8"
-            android:background="@color/annblue"
+            android:background="#80FFFFFF"
             android:orientation="vertical">
 
             <EditText
                 android:id="@+id/annTitle"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:fontFamily="sans-serif-medium"
                 android:hint="Title"
                 android:padding="8dp"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/grey_font"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/annContent"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="200dp"
                 android:fontFamily="sans-serif-medium"
                 android:hint="Content"
                 android:padding="8dp"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/grey_font"
                 android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/dateShow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="6dp"
+                android:gravity="right"
+                android:textColor="@color/blue"
+                android:textSize="16dp"/>
 
         </LinearLayout>
 
@@ -56,6 +65,7 @@
                 android:id="@+id/btnAddAnn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/annblue"
                 android:text="Add Announcement" />
 
         </LinearLayout>

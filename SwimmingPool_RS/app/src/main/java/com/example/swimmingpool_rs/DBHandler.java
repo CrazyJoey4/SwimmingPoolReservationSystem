@@ -43,6 +43,18 @@ public class DBHandler extends SQLiteOpenHelper {
     // below variable is for our password column.
     private static final String User_gender = "User_gender";
 
+    // below variable is for our password column.
+    private static final String AnnouncementId = "AnnouncementId";
+
+    // below variable is for our password column.
+    private static final String Title = "Title";
+
+    // below variable is for our password column.
+    private static final String Content = "Content";
+
+    // below variable is for our password column.
+    private static final String Date = "Date";
+
     // creating a constructor for our database handler.
     public DBHandler(Context context) {
         super(context, pooly_db, null, DB_VERSION);
@@ -151,8 +163,10 @@ public class DBHandler extends SQLiteOpenHelper {
     public void addAnnouncement(String title, String content) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("Title", title);
-        values.put("Content", content);
+
+        values.put(Title, title);
+        values.put(Content, content);
+
         db.insert("announcement", null, values);
         db.close();
     }
@@ -187,10 +201,11 @@ public class DBHandler extends SQLiteOpenHelper {
         }
     }
 
-    public void updateAnnouncement(int id, String title, String content) {
+    public void updateAnnouncement(int id, String title, String content, String date) {
         ContentValues values = new ContentValues();
         values.put("Title", title);
         values.put("Content", content);
+        values.put("Date", date);
 
         try {
             SQLiteDatabase db = getWritableDatabase();
