@@ -32,5 +32,6 @@ public class AnnouncementFragment extends Fragment {
         final TextView aContent = view.findViewById(R.id.annContent);
         final TextView aDate = view.findViewById(R.id.annDate);
 
+
     }
 }
