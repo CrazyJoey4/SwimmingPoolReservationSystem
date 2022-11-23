@@ -3,6 +3,7 @@ package com.example.swimmingpool_rs;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,10 +49,15 @@ public class SignupActivity extends AppCompatActivity {
 
                 if (usernameTxt.isEmpty() || fullnameTxt.isEmpty() || emailTxt.isEmpty() || passwordTxt.isEmpty()) {
                     Toast.makeText(SignupActivity.this, "Please enter your details", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else
+                {
                     dbHandler.addNewUser(usernameTxt, fullnameTxt, emailTxt, passwordTxt);
+                    Toast.makeText(SignupActivity.this, "You have Sign Up!", Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(SignupActivity.this, "User has been added.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });
