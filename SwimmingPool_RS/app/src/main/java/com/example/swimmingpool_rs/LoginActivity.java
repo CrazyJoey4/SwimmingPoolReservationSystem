@@ -2,7 +2,10 @@ package com.example.swimmingpool_rs;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -56,8 +59,8 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
 
                                     //Lead to main activity
-                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                    finish();
+                                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                            new HomeFragment()).commit();
                                 }
                                 else {
                                     Toast.makeText(LoginActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
