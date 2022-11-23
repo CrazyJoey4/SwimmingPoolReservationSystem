@@ -28,7 +28,6 @@ public class BookingFragment extends Fragment {
     Button btnSlot1, btnSlot2, btnSlot3, btnSlot4, btnSlot5, btnSlot6;
     Button btnProceed;
     TextView timeShow;
-    Spinner ddPool;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -45,7 +44,6 @@ public class BookingFragment extends Fragment {
         btnSlot6 = view.findViewById(R.id.btnSlot6);
         timeShow = view.findViewById(R.id.timeShow);
         btnProceed = view.findViewById(R.id.btnProceed);
-        ddPool = view.findViewById(R.id.ddPool);
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
