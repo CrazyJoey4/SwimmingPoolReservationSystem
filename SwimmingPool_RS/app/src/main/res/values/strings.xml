@@ -4,6 +4,7 @@
     <string name="nav_drawer_open">Open Navigation Drawer</string>
     <string name="nav_drawer_close">Closer Navigation Drawer</string>
     <string name="editprofile">Edit Profile Details</string>
+    <string name="txtBook">Book Now !</string>
 
     <string name="home">Home</string>
     <string name="announcement">Announcement</string>
@@ -23,7 +24,6 @@
     <string name="password">Password</string>
     <string name="acc">Don\'t have an account yet?</string>
     <string name="signup">Sign Up!</string>
-    <string name="pooly">Pooly</string>
     <string name="sign_up">Sign Up</string>
     <string name="userid">User ID</string>
     <string name="lName">Full Name</string>
