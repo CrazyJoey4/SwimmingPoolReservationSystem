@@ -1,5 +1,6 @@
 package com.example.swimmingpool_rs;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -12,48 +13,29 @@ public class DBHandler extends SQLiteOpenHelper {
     // creating a constant variables for our database.
     // below variable is for our database name.
     private static final String pooly_db = "poolydb";
-
-    // below int is our database version
     private static final int DB_VERSION = 1;
 
-    // below variable is for our id column.
-    private static final String User_ID = "User_ID";
-
-    // below variable is for our table name.
+    // below variable is for table names.
     private static final String users_tb = "users";
+    private static final String ann_tb = "announcement";
+    private static final String price_tb = "price";
 
-    // below variable is for our userid column.
+    // below variables are for users columns.
+    private static final String User_ID = "User_ID";
     private static final String Username = "Username";
-
-    // below variable is for our user full name column
     private static final String User_fullname = "User_fullname";
-
-    // below variable id for our user's type column.
     private static final String User_type = "User_type";
-
-    // below variable for our user email column.
     private static final String User_email = "User_email";
-
-    // below variable is for our password column.
     private static final String User_pwd = "User_pwd";
-
-    // below variable is for our password column.
     private static final String User_dob = "User_dob";
-
-    // below variable is for our password column.
     private static final String User_gender = "User_gender";
+    private static final String User_contact = "User_contact";
 
-    // below variable is for our password column.
-    private static final String AnnouncementId = "AnnouncementId";
-
-    // below variable is for our password column.
-    private static final String Title = "Title";
-
-    // below variable is for our password column.
-    private static final String Content = "Content";
-
-    // below variable is for our password column.
-    private static final String Date = "Date";
+    // below variable is for our announcement columns.
+    private static final String Ann_ID = "AnnouncementId";
+    private static final String Ann_title = "Title";
+    private static final String Ann_content = "Content";
+    private static final String Ann_date = "Date";
 
     // creating a constructor for our database handler.
     public DBHandler(Context context) {
@@ -63,10 +45,7 @@ public class DBHandler extends SQLiteOpenHelper {
     // below method is for creating a database by running a sqlite query
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // on below line we are creating
-        // an sqlite query and we are
-        // setting our column names
-        // along with their data types.
+        // on below line are creating an sqlite query and setting column names along with their data types.
         String query = "CREATE TABLE " + users_tb + " ("
                 + User_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Username + " TEXT, "
@@ -77,14 +56,14 @@ public class DBHandler extends SQLiteOpenHelper {
                 + User_dob + " TEXT,"
                 + User_gender + " TEXT)";
 
-        // at last we are calling a exec sql method to execute above sql query
+        // calling a exec sql method to execute above sql query
         db.execSQL(query);
 
-        String announcement_query = "CREATE TABLE announcement (" +
-                "AnnouncementId INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "Title TEXT," +
-                "Content TEXT," +
-                "Date DateTime DEFAULT (datetime('now','localtime')));";
+        String announcement_query = "CREATE TABLE " + ann_tb + " ("
+                + Ann_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + Ann_title + " TEXT,"
+                + Ann_content + " TEXT,"
+                + Ann_date + " DateTime DEFAULT (datetime('now','localtime')));";
 
         db.execSQL(announcement_query);
 
@@ -150,6 +129,37 @@ public class DBHandler extends SQLiteOpenHelper {
         }
     }
 
+    @SuppressLint("Range")
+    public Profile getUserDetails(String username) {
+        String sql = "SELECT * FROM users WHERE Username = " + username + ";";
+
+        Cursor c = null;
+        Profile entry = null;
+
+        try {
+            SQLiteDatabase db = getReadableDatabase();
+            c = db.rawQuery(sql, null);
+            c.moveToFirst();
+
+            if (c.getCount() > 0) {
+                entry = new Profile();
+                entry.setUser_ID(c.getInt(c.getColumnIndex(Username)));
+                entry.setUser_fullname(c.getString(c.getColumnIndex(User_fullname)));
+                entry.setUser_dob(c.getString(c.getColumnIndex(User_dob)));
+                entry.setUser_gender(c.getString(c.getColumnIndex(User_gender)));
+                entry.setUser_email(c.getString(c.getColumnIndex(User_email)));
+                entry.setUser_contact(c.getString(c.getColumnIndex(User_contact)));
+                entry.setUser_pwd(c.getString(c.getColumnIndex(User_pwd)));
+            }
+
+        } catch (Exception e) {
+            Log.d("Query Exception:", e.getMessage());
+        } finally {
+            //c.close();
+            return entry;
+        }
+    }
+
     public boolean checkAdmin(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery("Select * from users where Username = ? and User_type = 'Admin'", new String[]{username});
@@ -164,13 +174,14 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(Title, title);
-        values.put(Content, content);
+        values.put(Ann_title, title);
+        values.put(Ann_content, content);
 
-        db.insert("announcement", null, values);
+        db.insert(ann_tb, null, values);
         db.close();
     }
 
+    @SuppressLint("Range")
     public Announcement getAnnouncement(int id, int position) {
         String sql = "SELECT * FROM announcement WHERE AnnouncementId=" + id +
                 "ORDER BY AnnouncementId DESC LIMIT " + position + ",1;";
@@ -185,17 +196,15 @@ public class DBHandler extends SQLiteOpenHelper {
 
             if (c.getCount() > 0) {
                 entry = new Announcement();
-                entry.setAnnouncementId(c.getInt(c.getColumnIndexOrThrow("AnnouncementId")));
-                entry.setContent(c.getString(c.getColumnIndexOrThrow("Content")));
-                entry.setTitle(c.getString(c.getColumnIndexOrThrow("Title")));
-                entry.setDatetime(c.getString(c.getColumnIndexOrThrow("Date")));
+                entry.setAnnouncementId(c.getInt(c.getColumnIndex("AnnouncementId")));
+                entry.setContent(c.getString(c.getColumnIndex("Content")));
+                entry.setTitle(c.getString(c.getColumnIndex("Title")));
+                entry.setDatetime(c.getString(c.getColumnIndex("Date")));
             }
 
         } catch (Exception e) {
             Log.d("Query Exception:", e.getMessage());
-        }
-        finally
-        {
+        } finally {
             //c.close();
             return entry;
         }

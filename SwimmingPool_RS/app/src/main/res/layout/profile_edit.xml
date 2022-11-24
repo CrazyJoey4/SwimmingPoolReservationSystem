@@ -96,7 +96,7 @@
             app:layout_constraintWidth_percent="0.7">
 
             <EditText
-                android:id="@+id/bi"
+                android:id="@+id/et_dob"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#00000000"
