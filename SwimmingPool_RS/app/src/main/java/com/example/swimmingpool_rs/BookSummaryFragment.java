@@ -1,25 +1,21 @@
 package com.example.swimmingpool_rs;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-public class BookingFragment extends Fragment {
+public class BookSummaryFragment extends Fragment {
     private DBHandler dbHandler;
 
     @Nullable
@@ -32,18 +28,16 @@ public class BookingFragment extends Fragment {
     Button btnConfirm;
     TextView dateShow;
     Button btnSlot1, btnSlot2, btnSlot3, btnSlot4, btnSlot5, btnSlot6;
+    Button btnProceed;
     TextView timeShow;
-
     NumberPicker paxNum;
     TextView paxShow;
-
     RadioGroup radioGroup;
     RadioButton pool1;
     RadioButton pool2;
     RadioButton pool3;
     TextView poolShow;
 
-    Button btnProceed;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -52,7 +46,6 @@ public class BookingFragment extends Fragment {
         dateShow = view.findViewById(R.id.dateShow);
         datePicker = view.findViewById(R.id.bookDatePicker);
         btnConfirm = view.findViewById(R.id.btnConfirm);
-
         btnSlot1 = view.findViewById(R.id.btnSlot1);
         btnSlot2 = view.findViewById(R.id.btnSlot2);
         btnSlot3 = view.findViewById(R.id.btnSlot3);
@@ -60,7 +53,6 @@ public class BookingFragment extends Fragment {
         btnSlot5 = view.findViewById(R.id.btnSlot5);
         btnSlot6 = view.findViewById(R.id.btnSlot6);
         timeShow = view.findViewById(R.id.timeShow);
-
         btnProceed = view.findViewById(R.id.btnProceed);
 
         paxNum = view.findViewById(R.id.paxNumber);
@@ -78,16 +70,6 @@ public class BookingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dateShow.setText("Date: " + datePicker.getDayOfMonth() +"/"+ (datePicker.getMonth() + 1) + "/" + datePicker.getYear());
-            }
-        });
-
-        btnProceed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getActivity()
-                        .getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BookSummaryFragment());
-                fragmentTransaction.commit();
             }
         });
 
