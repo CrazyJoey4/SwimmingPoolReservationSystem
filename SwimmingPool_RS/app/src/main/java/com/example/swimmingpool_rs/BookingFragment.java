@@ -84,6 +84,11 @@ public class BookingFragment extends Fragment {
         btnProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Bundle result = new Bundle();
+                result.putString("bundleKey", "result");
+                getParentFragmentManager().setFragmentResult("requestKey", result);
+
                 FragmentTransaction fragmentTransaction = getActivity()
                         .getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, new BookSummaryFragment());
