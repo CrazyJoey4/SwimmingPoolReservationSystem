@@ -60,6 +60,11 @@ public class AnnouncementFragment extends Fragment {
             aContent.setText(a.getContent());
             aDate.setText(a.getDatetime());
         }
-
+        else
+        {
+            aTitle.setText(R.string.notice);
+            aContent.setText(R.string.content);
+            aDate.setText("2022-11-24");
+        }
     }
 }

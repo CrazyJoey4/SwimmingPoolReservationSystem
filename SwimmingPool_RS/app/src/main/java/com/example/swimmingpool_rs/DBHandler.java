@@ -131,7 +131,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     @SuppressLint("Range")
     public Profile getUserDetails(String username) {
-        String sql = "SELECT * FROM users WHERE Username = " + username + ";";
+        String sql = "SELECT * FROM users WHERE Username = '" + username + "';";
 
         Cursor c = null;
         Profile entry = null;

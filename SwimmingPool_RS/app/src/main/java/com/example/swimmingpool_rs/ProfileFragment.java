@@ -12,11 +12,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
 public class ProfileFragment extends Fragment {
     private DBHandler dbHandler;
+    private Profile profile;
 
     @Nullable
     @Override
@@ -40,23 +43,30 @@ public class ProfileFragment extends Fragment {
         TextView pEmail = view.findViewById(R.id.et_email);
         TextView pContact = view.findViewById(R.id.et_contact);
 
-        Profile profile = new Profile();
-        profile = dbHandler.getUserDetails(navUsername.toString());
+        dbHandler = new DBHandler(getActivity());
 
-        pUsername.setText(profile.getUsername());
-        pFname.setText(profile.getUser_fullname());
-        pDob.setText(profile.getUser_dob());
-        pGender.setText(profile.getUser_gender());
-        pEmail.setText(profile.getUser_email());
-        pContact.setText(profile.getUser_contact());
+        if(name != null)
+        {
+            profile = dbHandler.getUserDetails(name);
 
+            if(profile != null)
+            {
+                pUsername.setText(profile.getUsername());
+                pFname.setText(profile.getUser_fullname());
+                pDob.setText(profile.getUser_dob());
+                pGender.setText(profile.getUser_gender());
+                pEmail.setText(profile.getUser_email());
+                pContact.setText(profile.getUser_contact());
+            }
+        }
 
         ImageButton editProfile = view.findViewById(R.id.editProfile);
+
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), EditActivity.class);
-                startActivity(intent);
+                Intent in = new Intent(getActivity(), EditActivity.class);
+                startActivity(in);
             }
         });
     }

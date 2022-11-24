@@ -30,6 +30,14 @@
     <string name="birth_date">Date of Birth</string>
     <string name="gender">Gender</string>
     <string name="contact">Contact</string>
+    <string name="notice">Renovating Party Pool</string>
+    <string name="content">Dear customers,\n\n
+
+We are sorry to inform you that the party pool is now renovating. So, the party pool will not available for reservation.\n\n
+Centre will close on 27th Nov 2022\n
+
+Pooly swimming club will be close on 27th Nov 2022.\n
+Sorry for any incovenience caused. Thank you.</string>
 
     <color name="blue">#21425A</color>
     <color name="annblue">#075090</color>
