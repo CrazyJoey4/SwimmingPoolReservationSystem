@@ -1,12 +1,16 @@
 package com.example.swimmingpool_rs;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.NumberPicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -29,6 +33,14 @@ public class BookingFragment extends Fragment {
     Button btnSlot1, btnSlot2, btnSlot3, btnSlot4, btnSlot5, btnSlot6;
     Button btnProceed;
     TextView timeShow;
+    NumberPicker paxNum;
+    TextView paxShow;
+    RadioGroup radioGroup;
+    RadioButton pool1;
+    RadioButton pool2;
+    RadioButton pool3;
+    TextView poolShow;
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -45,6 +57,17 @@ public class BookingFragment extends Fragment {
         btnSlot6 = view.findViewById(R.id.btnSlot6);
         timeShow = view.findViewById(R.id.timeShow);
         btnProceed = view.findViewById(R.id.btnProceed);
+
+        paxNum = view.findViewById(R.id.paxNumber);
+        paxNum.setMaxValue(30);
+        paxNum.setMinValue(1);
+        paxShow = view.findViewById(R.id.paxShow);
+
+        radioGroup = view.findViewById(R.id.radioGroup);
+        pool1 = view.findViewById(R.id.poolT1);
+        pool2 = view.findViewById(R.id.poolT2);
+        pool3 = view.findViewById(R.id.poolT3);
+        poolShow = view.findViewById(R.id.poolShow);
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +118,29 @@ public class BookingFragment extends Fragment {
             }
         });
 
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    case R.id.poolT1:
+                        poolShow.setText("Pool Type: " + pool1.getText());
+                        break;
+                    case R.id.poolT2:
+                        poolShow.setText("Pool Type: " + pool2.getText());
+                        break;
+                    case R.id.poolT3:
+                        poolShow.setText("Pool Type: " + pool3.getText());
+                        break;
+                }
+            }
+        });
 
+        paxNum.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int i, int g) {
+                int valuePick = paxNum.getValue();
+                paxShow.setText("Pax No.: " + valuePick);
+            }
+        });
     }
 }

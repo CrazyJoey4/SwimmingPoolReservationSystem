@@ -7,14 +7,14 @@
     tools:layout_editor_absoluteX="1dp"
     tools:layout_editor_absoluteY="1dp">
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/swimming_back"
         android:backgroundTint="#80FFFFFF"
         android:backgroundTintMode="src_over"
         android:scaleType="centerCrop">
-        
+
         <LinearLayout
             android:id="@+id/annBox"
             android:layout_width="match_parent"
@@ -55,5 +55,5 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </FrameLayout>
 </ScrollView>
