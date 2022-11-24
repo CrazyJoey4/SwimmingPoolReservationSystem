@@ -32,21 +32,6 @@ public class AnnouncementFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        /*
-        final TextView aTitle = view.findViewById(R.id.annTitle);
-        final TextView aContent = view.findViewById(R.id.annContent);
-        final TextView aDate = view.findViewById(R.id.annDate);
-
-        dbHandler = new DBHandler(getActivity());
-
-        Announcement a = dbHandler.getAnnouncement(0, 0);
-        if (a != null){
-            aTitle.setText(a.getTitle());
-            aContent.setText(a.getContent());
-            aDate.setText(a.getDatetime());
-        }
-        */
-
         aTitle = view.findViewById(R.id.annTitle);
         aContent = view.findViewById(R.id.annContent);
         aDate = view.findViewById(R.id.annDate);
